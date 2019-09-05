@@ -263,7 +263,7 @@ class builder():
 		return faces, landmarks, segmentations
 
 	# Export the frames out of a video at a specific fps
-	def videoToFaces(self, filename, self.FRAME_PERCENTAGE=5, maxFrame=0):
+	def videoToFaces(self, filename, maxFrame=0):
 		print("Extracting faces from the video frames...")
 		basename = os.path.splitext(ntpath.basename(filename))[0]
 		#print("basename:", basename)
