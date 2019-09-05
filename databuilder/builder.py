@@ -44,7 +44,7 @@ from utils.visualize import show_parsing_with_annos
 
 
 
-class BaseFaceDetector():
+class builder():
 	def __init__(self, VIDEO_QUALITY="720", FRAME_PERCENTAGE=40, DIR_VIDEOS="Videos", DIR_FACES="Faces"):
 		# The variables
 		self.VIDEO_QUALITY     = VIDEO_QUALITY     # The trailer quality we'll download: 480, 720 or 1080
