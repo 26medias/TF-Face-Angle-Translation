@@ -482,7 +482,7 @@ class builder():
 			writer.writeheader()
 			
 			# Find the faces on the video
-			faces, landmarks, segmentations	= self.videoToFaces(videoFilename, self.FRAME_PERCENTAGE=self.FRAME_PERCENTAGE)
+			faces, landmarks, segmentations	= self.videoToFaces(videoFilename)
 			nFaces			 = len(faces)
 			print(nFaces," faces detected")
 
@@ -533,7 +533,7 @@ class builder():
 	def clusterFacesFromVideos(self, urls):
 		nUrls = len(urls)
 		for n,url in enumerate(urls):
-			self.clusterFacesOnVideo(self, url, self.FRAME_PERCENTAGE)
+			self.clusterFacesOnVideo(self, url)
 
 	def fetchAllHDVideos(self, url, quality="480"):
 		response = requests.get(url)
