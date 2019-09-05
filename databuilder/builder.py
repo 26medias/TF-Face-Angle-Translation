@@ -272,9 +272,6 @@ class builder():
 		
 		fps = cap.get(cv2.CAP_PROP_FPS)
 		nframes = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-		
-		if TEST_MODE is True:
-			maxFrame = int(nframes/4)
 			
 		processFrames = int(nframes*self.FRAME_PERCENTAGE/100)
 		skipFrame		 = int(nframes/processFrames)
