@@ -533,15 +533,15 @@ class builder():
 	def clusterFacesFromVideos(self, urls):
 		nUrls = len(urls)
 		for n,url in enumerate(urls):
-			self.clusterFacesOnVideo(self, url)
+			self.clusterFacesOnVideo(url)
 
-	def fetchAllHDVideos(self, url, quality="480"):
+	def fetchAllHDVideos(self, url):
 		response = requests.get(url)
 		soup = BeautifulSoup(response.content, "html5lib")
 		links = soup.find_all('a')
 		videos = []
 		for tag in links:
 			link = tag.get('href', None)
-			if link is not None and 'h'+str(quality)+'p' in link:
+			if link is not None and 'h'+str(self.VIDEO_QUALITY)+'p' in link:
 				videos.append(link)
 		return videos
