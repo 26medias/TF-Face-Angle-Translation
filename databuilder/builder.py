@@ -436,7 +436,7 @@ class builder():
 		#return groups;
 
 	# Cluster all the faces from a remote video
-	def clusterFacesOnVideo(self, url, self.FRAME_PERCENTAGE=5):
+	def clusterFacesOnVideo(self, url):
 		print("Processing ", url);
 		# Download the video
 		videoFilename = self.downloadFile(url)
@@ -530,7 +530,7 @@ class builder():
 			self.exportImageGrids(dirFaces, dirPreviews)
 
 
-	def clusterFacesFromVideos(self, urls, self.FRAME_PERCENTAGE):
+	def clusterFacesFromVideos(self, urls):
 		nUrls = len(urls)
 		for n,url in enumerate(urls):
 			self.clusterFacesOnVideo(self, url, self.FRAME_PERCENTAGE)
