@@ -41,7 +41,7 @@ import csv
 from models.detector import face_detector
 from models.parser import face_parser
 from utils.visualize import show_parsing_with_annos
-
+from threading import Thread
 
 
 class builder():
@@ -542,3 +542,38 @@ class builder():
 			if link is not None and 'h'+str(self.VIDEO_QUALITY)+'p' in link:
 				videos.append(link)
 		return videos
+
+
+
+class threadedBuilder():
+	def __init__(self, VIDEO_QUALITY="720", FRAME_PERCENTAGE=40, DIR_VIDEOS="Videos", DIR_FACES="Faces"):
+		# The variables
+		self.VIDEO_QUALITY     = VIDEO_QUALITY     # The trailer quality we'll download: 480, 720 or 1080
+		self.FRAME_PERCENTAGE  = FRAME_PERCENTAGE  # from 0.1 to 100: The percentage of frames that will be analyzed in the video
+		self.DIR_VIDEOS        = DIR_VIDEOS
+		self.DIR_FACES         = DIR_FACES
+
+	def fetchAllHDVideos(self, url):
+		response = requests.get(url)
+		soup = BeautifulSoup(response.content, "html5lib")
+		links = soup.find_all('a')
+		videos = []
+		for tag in links:
+			link = tag.get('href', None)
+			if link is not None and 'h'+str(self.VIDEO_QUALITY)+'p' in link:
+				videos.append(link)
+		return videos
+		
+	def processVideo(self, url):
+		datasetBuilder = builder(FRAME_PERCENTAGE=2)
+		#urls = datasetBuilder.fetchAllHDVideos("https://www.davestrailerpage.co.uk/")
+		datasetBuilder.clusterFacesFromVideos([url])
+		
+	def process(website):
+		videos = self.fetchAllHDVideos(website)
+		print("urls", urls)
+		
+		for video in videos:
+			print("video", video)
+			Thread(target=self.processVideo, args(video)).start()
+			
