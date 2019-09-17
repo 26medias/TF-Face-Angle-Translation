@@ -571,7 +571,7 @@ class threadedBuilder():
 		
 	def process(self, website):
 		videos = self.fetchAllHDVideos(website)
-		print("urls", urls)
+		print("videos", videos)
 		
 		for video in videos:
 			print("video", video)
