@@ -575,5 +575,5 @@ class threadedBuilder():
 		
 		for video in videos:
 			print("video", video)
-			Thread(target=self.processVideo, args(video)).start()
+			Thread(target=self.processVideo, args=(video)).start()
 			
