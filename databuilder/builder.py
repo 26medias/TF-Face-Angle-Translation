@@ -569,7 +569,7 @@ class threadedBuilder():
 		#urls = datasetBuilder.fetchAllHDVideos("https://www.davestrailerpage.co.uk/")
 		datasetBuilder.clusterFacesFromVideos([url])
 		
-	def process(website):
+	def process(self, website):
 		videos = self.fetchAllHDVideos(website)
 		print("urls", urls)
 		
